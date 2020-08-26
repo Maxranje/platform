@@ -7,7 +7,7 @@ return array(
             'dsn'   => '',
             'hostname' => '127.0.0.1',
             'hostport' => 3306,
-            'username' => 'maxranje',
+            'username' => 'root',
             'password' => 'max123456',
             'database' => 'zy',
             'dbdriver' => 'mysqli',
