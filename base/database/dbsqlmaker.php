@@ -41,7 +41,7 @@ class Zy_Database_Dbsqlmaker
         self::$db = $_db;
 
         // 1. options
-        if($options !== NULL)
+        if(!empty($options))
         {
             $options = self::__makeList($options, Zy_Database_Dbsqlmaker::LIST_COM, ' ');
             if(!strlen($options))
@@ -71,7 +71,7 @@ class Zy_Database_Dbsqlmaker
         $sql .= $tables;
 
         // 4. conditions
-        if($conds !== NULL)
+        if(!empty($conds))
         {
             $conds = self::__makeList($conds, Zy_Database_Dbsqlmaker::LIST_AND);
             if(!strlen($conds))
@@ -83,7 +83,7 @@ class Zy_Database_Dbsqlmaker
         }
 
         // 5. other append
-        if($appends !== NULL)
+        if(!empty($appends))
         {
             $appends = self::__makeList($appends, Zy_Database_Dbsqlmaker::LIST_COM, ' ');
             if(!strlen($appends))
@@ -138,7 +138,7 @@ class Zy_Database_Dbsqlmaker
     private static function __makeUpdateOrDelete($table, $row, $conds, $options, $appends)
     {
         // 1. options
-        if($options !== NULL)
+        if(!empty($appends))
         {
             if(is_array($options))
             {
@@ -167,7 +167,7 @@ class Zy_Database_Dbsqlmaker
         }
 
         // 3. conditions
-        if($conds !== NULL)
+        if(!empty($conds))
         {
             $conds = self::__makeList($conds, Zy_Database_Dbsqlmaker::LIST_AND);
             if(!strlen($conds))
@@ -179,7 +179,7 @@ class Zy_Database_Dbsqlmaker
         }
 
         // 4. other append
-        if($appends !== NULL)
+        if(!empty($appends))
         {
             $appends = self::__makeList($appends, Zy_Database_Dbsqlmaker::LIST_COM, ' ');
             if(!strlen($appends))
@@ -211,7 +211,7 @@ class Zy_Database_Dbsqlmaker
 
         self::$db = $_db;
         // 1. options
-        if($options !== NULL)
+        if(!empty($options))
         {
             if(is_array($options))
             {

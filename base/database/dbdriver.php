@@ -39,7 +39,7 @@ abstract class Zy_Database_Dbdriver {
 	public $pconnect		= FALSE;
 
 	// 连接线程ID
-	public $conn_id			= FALSE;
+	public $conn_id			= NULL;
 
 	// 结果
 	public $result_id		= FALSE;
@@ -129,7 +129,6 @@ abstract class Zy_Database_Dbdriver {
 			}
 		}
 
-		Zy_Helper_Log::addnotice('Database Driver Class Initialized');
 		return $this->db_set_charset($this->char_set);
 	}
 
@@ -227,7 +226,7 @@ abstract class Zy_Database_Dbdriver {
 	 */
 	public function query($sql = '', $binds = FALSE)
 	{
-		if ($sql === '')
+		if (empty($sql))
 		{
 			trigger_error('[Error] db invalid query [Detail] sql empty');
 		}
