@@ -27,6 +27,7 @@ class Dao_Teacher_Mysql_Teacher extends Zy_Core_Dao {
             "teacherdesc" => "teacherdesc",
             "status" => "status",
             "createtime" => "createtime",
+            "updatetime" => "updatetime",
         );
     }
 }

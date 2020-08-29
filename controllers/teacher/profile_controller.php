@@ -52,6 +52,7 @@ class Controller_Profile extends Zy_Core_Controller{
             "teacheravatar" => $teacheravatar,
             "teacherpic" => $teacherpic,
             "teacherdesc" => $teacherdesc,
+            "status" => 2,
             "teacherdetails" => $teacherdetails,
             "updatetime" => time(),
         ];

@@ -3,7 +3,7 @@
 class Dao_Teacher_Mysql_Course extends Zy_Core_Dao {
 
     public function __construct() {
-        $this->_dbName      = "zdby";
+        $this->_dbName      = "zy_platform";
         $this->_table       = "tblTeacherCourse";
         
         $this->arrFieldsMap = array(

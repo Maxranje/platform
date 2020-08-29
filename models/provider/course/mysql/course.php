@@ -39,6 +39,7 @@ class Dao_Course_Mysql_Course extends Zy_Core_Dao {
             "coursedesc"   => "coursedesc",
             "status"   => "status",
             "createtime"   => "createtime",
+            "updatetime"   => "updatetime",
         ];
     }
 }

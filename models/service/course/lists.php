@@ -55,7 +55,7 @@ class Service_Course_Lists {
         $arrFields = $this->daoCourse->simpleFields;
 
         $arrAppends = array(
-            'order by id desc',
+            'order by courseid desc',
             "limit {$pn} , {$rn}",
         );
 
@@ -89,7 +89,7 @@ class Service_Course_Lists {
             ];
             $arrFields = $this->daoTeacher->simpleFields;
             $arrAppends = [
-                'order by id desc',
+                'order by teacherid desc',
             ];
             $teacher = $this->daoTeacher->getListByConds($arrConds, $arrFields, null, $arrAppends);
             $teacher = empty($teacher) ? [] : $teacher;
@@ -124,7 +124,7 @@ class Service_Course_Lists {
             }
         }
 
-        if (empty($teacherids)) {
+        if (!empty($teacherids)) {
             $data = [
                 "courseid"      => $courseid,
                 "coursetype"    => $profile['coursetype'],

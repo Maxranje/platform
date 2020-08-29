@@ -25,15 +25,15 @@ class Service_Teacher_Lists {
             $arrConds[] = 'status=' . $status;
         }
 
-        $arrFields = $this->daoCourse->simpleFields;
+        $arrFields = $this->daoTeacher->simpleFields;
 
         $arrAppends = array(
-            'order by id desc',
+            'order by teacherid desc',
             "limit {$pn} , {$rn}",
         );
 
-        $total = $this->daoCourse->getCntByConds($arrConds);
-        $lists = $this->daoCourse->getListByConds($arrConds, $arrFields, null , $arrAppends);
+        $total = $this->daoTeacher->getCntByConds($arrConds);
+        $lists = $this->daoTeacher->getListByConds($arrConds, $arrFields, null , $arrAppends);
         if (empty($lists)) {
             return [0, []];
         }
@@ -70,7 +70,7 @@ class Service_Teacher_Lists {
     }
 
     public function changeTeacherStatus ($teacherid, $status) {
-        $ret = $this->daoCourse->updateByConds(['teacherid' => $teacherid], ['status' => $status]);
+        $ret = $this->daoTeacher->updateByConds(['teacherid' => $teacherid], ['status' => $status]);
         if ($ret == false) {
             return false;
         }
