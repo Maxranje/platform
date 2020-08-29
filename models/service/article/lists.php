@@ -38,7 +38,7 @@ class Service_Article_Lists {
         $arrFields = $this->articleDao->simpleFields ;
 
         $arrAppends = [
-            'order by id desc',
+            'order by articleid desc',
             "limit {$pn} , {$rn}",
         ];
 

@@ -4,7 +4,7 @@ class Controller_Lists extends Zy_Core_Controller{
     public function ajaxGetArticleList () {
         $articletitle   = empty($this->_request['articletitle']) ? '' : trim($this->_request['articletitle']);
         $articletype    = empty($this->_request['articletype']) ? 0 : intval($this->_request['articletype']);
-        $recommend      = empty($this->_request['recommend']) ? '' : trim($this->_request['recommend']);
+        $recommend      = empty($this->_request['recommend']) ? -1 : intval($this->_request['recommend']);
         $status         = empty($this->_request['status']) ? 0 : intval($this->_request['status']);
         $starttime      = empty($this->_request['starttime']) ? '' : trim($this->_request['starttime']);
         $endtime        = empty($this->_request['endtime']) ? '' : trim($this->_request['endtime']);

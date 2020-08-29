@@ -9,7 +9,7 @@ return array(
             'hostport' => 3306,
             'username' => 'root',
             'password' => 'max123456',
-            'database' => 'zy',
+            'database' => 'zy_platform',
             'dbdriver' => 'mysqli',
             'pconnect' => FALSE,
             'char_set' => 'utf8',

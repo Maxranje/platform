@@ -23,7 +23,7 @@ class Dao_Article_Mysql_Article extends Zy_Core_Dao {
 
         $this->simpleFields = array(
             'articleid'   => 'articleid',
-            'articlename'   => 'articlename',
+            'articletitle'   => 'articletitle',
             'articledesc'   => 'articledesc',
             'articleimg'   => 'articleimg',
             'articleauthor'   => 'articleauthor',
