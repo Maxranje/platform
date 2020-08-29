@@ -28,7 +28,7 @@ class Service_Banner_Lists {
         $arrFields = $this->daoBanner->arrFieldsMap;
 
         $arrAppends = array(
-            'order by id desc',
+            'order by bannerid desc',
             "limit {$pn} , {$rn}",
         );
 
@@ -49,7 +49,7 @@ class Service_Banner_Lists {
 
 
     public function getBannerProfile ($bannerid) {
-        $details = $this->daoBanner->getRecordByConds(['bannerid' => $bannerid], $this->daoCourse->arrFieldsMap);
+        $details = $this->daoBanner->getRecordByConds(['bannerid' => $bannerid], $this->daoBanner->arrFieldsMap);
         if (empty($details)) {
             return [];
         }

@@ -23,7 +23,7 @@ class Service_Campus_Lists {
         $arrFields = $this->daoCampus->simpleFields;
 
         $arrAppends = array(
-            'order by id asc',
+            'order by campusid asc',
         );
 
         $total = $this->daoCampus->getCntByConds($arrConds);

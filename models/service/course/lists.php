@@ -102,6 +102,9 @@ class Service_Course_Lists {
     }
 
     public function modifyCourseProfile ($courseid , $profile) {
+        $teacherids = $profile['teacherids'];
+        unset($profile['teacherids']);
+
         if (empty($courseid)) {    
             $ret = $this->daoCourse->insertRecords($profile);
             if ($ret == false) {
@@ -121,14 +124,15 @@ class Service_Course_Lists {
             }
         }
 
-        if (empty($profile['teacherids'])) {
+        if (empty($teacherids)) {
             $data = [
                 "courseid"      => $courseid,
                 "coursetype"    => $profile['coursetype'],
                 "createtime"    => time(),
                 "updatetime"    => time(),
             ];
-            foreach ($profile['teacherids'] as $teacherid) {
+            $teacherids = explode(',', $teacherids);
+            foreach ($teacherids as $teacherid) {
                 $data['teacherid'] = $teacherid;
                 $this->daoTeacherCourse->insertRecords($data);
             }

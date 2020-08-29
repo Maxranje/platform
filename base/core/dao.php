@@ -42,7 +42,7 @@ class Zy_Core_Dao{
      * 程序中的字段名和数据表列名的映射数组
      * @var array
      */
-    protected $arrFieldsMap;
+    public $arrFieldsMap;
 
     /**
      * Dao基类的构造函数，子类需要写自己的构造函数覆盖父类构造函数.

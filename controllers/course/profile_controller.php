@@ -34,7 +34,7 @@ class Controller_Profile extends Zy_Core_Controller{
         $isvip = empty($this->_request['isvip']) ? 1 : intval($this->_request['isvip']);
         $recommend = empty($this->_request['recommend']) ? 0 : intval($this->_request['recommend']);
 
-        if (empty($courseo) || empty($coursename) || empty($courseimg) || empty($coursetype) || empty($location) || empty($maxstunum) 
+        if (empty($courseno) || empty($coursename) || empty($courseimg) || empty($coursetype) || empty($location) || empty($maxstunum) 
             || empty($coursemodel) || empty($coursedesc) || empty($coursedetails)|| empty($price) || empty($coursetime)) {
             $this->error(405, '部分参数为空, 请重新尝试');
         }
@@ -60,7 +60,7 @@ class Controller_Profile extends Zy_Core_Controller{
             "coursedetails" => $coursedetails,
             "price" => $price,
             "status" => 2,
-            "teacherids" => empty($teacherids) ? [] : explode(',', $teacherids),
+            "teacherids" => $teacherids,
             "recommend" => $recommend,
             "isvip" => $isvip,
             "updatetime" => time(),

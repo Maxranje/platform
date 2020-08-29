@@ -68,7 +68,7 @@ class Service_Comment_Lists {
         } else {
             $ret = $this->daoComment->updateByConds(['id' => $id], $profile);
         }
-        return $ret == false ? true : false;
+        return $ret == false ? false : true;
     }
 
     public function deleteCommentProfile ($id) {

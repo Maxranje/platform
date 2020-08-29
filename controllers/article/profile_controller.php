@@ -19,7 +19,7 @@ class Controller_Profile extends Zy_Core_Controller{
 
     public function ajaxModifyArticle () {
         $articletitle = empty($this->_request['articletitle']) ? '' : trim($this->_request['articletitle']);
-        $recommend = empty($this->_request['recommend']) ? '' : trim($this->_request['recommend']);
+        $recommend = empty($this->_request['recommend']) ? 0 : intval($this->_request['recommend']);
         $articleid = empty($this->_request['articleid']) ? 0 : intval($this->_request['articleid']);
         $articledesc = empty($this->_request['articledesc']) ? '' : trim($this->_request['articledesc']);
         $articleimg = empty($this->_request['articleimg']) ? '' : trim($this->_request['articleimg']);
@@ -68,7 +68,6 @@ class Controller_Profile extends Zy_Core_Controller{
             'status'            => 2,
             'recommend'         => $recommend,
             'articletype'       => $articletype,
-            'campusid'          => $campusid,
             'country'           => $country,
             'updatetime'        => time(),
         ];
@@ -78,7 +77,7 @@ class Controller_Profile extends Zy_Core_Controller{
         }
 
         $serivce = new Service_Article_Lists ();
-        $ret = $serivce->modifyArticleProfile($articleid, $profile);
+        $ret = $serivce->modifyArticleProfile($articleid, $campusid, $profile);
         
         if ($ret == false) {
             $this->error(500, '服务错误, 请重试');
@@ -89,7 +88,7 @@ class Controller_Profile extends Zy_Core_Controller{
 
     public function ajaxChangeArticleStatus () {
         $articleid  = empty($this->_request['articleid']) ? 0 : intval($this->_request['articleid']);
-        $status     = empty($this->_request['status']) ? 2 : intval($this->_request['coursename']);
+        $status     = empty($this->_request['status']) ? 2 : intval($this->_request['status']);
 
         if (empty($articleid) ) {
             $this->error(405, '文章id参数为空, 请重新尝试');

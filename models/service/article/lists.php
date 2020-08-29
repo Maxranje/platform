@@ -77,8 +77,7 @@ class Service_Article_Lists {
         return $article;
     }
 
-    public function modifyArticleProfile ($articleid, $profile) {
-        
+    public function modifyArticleProfile ($articleid, $campusid, $profile) {
         if (empty($articleid)) {
             $ret = $this->articleDao->insertRecords($profile);
             if ($ret == false ) {
@@ -93,12 +92,12 @@ class Service_Article_Lists {
         }
 
         if ($profile['articletype'] == self::ARTICLE_TYPE_CAMPUS) {
-            $campus = $this->daoCampus->getRecordByConds(['campusid' => $profile['campusid']], $this->daoCampus->simpleFields);
+            $campus = $this->campusDao->getRecordByConds(['campusid' => $campusid], $this->campusDao->simpleFields);
             if (empty($campus)) {
                 $this->articleDao->updateByConds(['articleid' => $articleid], ['articletype' => self::ARTICLE_TYPE_NORMAL]);    
             } else {
                 $this->articleDao->updateByConds(['articleid' => $campus['articleid']], ['articletype' => self::ARTICLE_TYPE_NORMAL]);
-                $this->campusDao->updateByConds(['campusid' => $profile['campusid']], ['articleid' => $articleid]);
+                $this->campusDao->updateByConds(['campusid' => $campusid], ['articleid' => $articleid]);
             }
         }
 
@@ -118,7 +117,8 @@ class Service_Article_Lists {
             }
         }
         
-        $this->articleDao->updateByConds(['articleid' => $articleid], ['status' => $status]) == false ? false : true ;
+        $this->articleDao->updateByConds(['articleid' => $articleid], ['status' => $status]);
+        return ;
     }
 
 }
