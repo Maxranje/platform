@@ -17,7 +17,7 @@ class Service_Teacher_Lists {
             $arrConds[] = 'teachername like "%' . $teachername . '%"';
         }
         if (!empty($courseid)) {
-            $teacherid = $this->daoTeacherCourse->getListByConds(['courseid' => $courseid], $this->daoTeacherCourse->simpleFields);
+            $teacherid = $this->daoTeacherCourse->getListByConds(['courseid' => $courseid], $this->daoTeacherCourse->arrFieldsMap);
             $teacherid = array_column($teacherid, 'teacherid');
             $arrConds[] = "teacherid in (" . implode(',', $teacherid) . ')';
         }
