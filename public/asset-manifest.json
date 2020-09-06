@@ -1,10 +1,10 @@
 {
-  "/umi.css": "/umi.f129e81f.css",
-  "/umi.js": "/umi.d022ad87.js",
-  "/.DS_Store": "/.DS_Store",
-  "/favicon.png": "/favicon.png",
-  "/icons/icon-128x128.png": "/icons/icon-128x128.png",
-  "/icons/icon-192x192.png": "/icons/icon-192x192.png",
-  "/icons/icon-512x512.png": "/icons/icon-512x512.png",
-  "/index.html": "/index.html"
+  "/umi.css": "/platform/public/umi.f129e81f.css",
+  "/umi.js": "/platform/public/umi.a6d9a2a9.js",
+  "/.DS_Store": "/platform/public/.DS_Store",
+  "/favicon.png": "/platform/public/favicon.png",
+  "/icons/icon-128x128.png": "/platform/public/icons/icon-128x128.png",
+  "/icons/icon-192x192.png": "/platform/public/icons/icon-192x192.png",
+  "/icons/icon-512x512.png": "/platform/public/icons/icon-512x512.png",
+  "/index.html": "/platform/public/index.html"
 }
