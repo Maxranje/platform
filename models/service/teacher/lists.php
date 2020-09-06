@@ -18,6 +18,9 @@ class Service_Teacher_Lists {
         }
         if (!empty($courseid)) {
             $teacherid = $this->daoTeacherCourse->getListByConds(['courseid' => $courseid], $this->daoTeacherCourse->arrFieldsMap);
+            if (empty($teacherid)) {
+                return [0, []];
+            }
             $teacherid = array_column($teacherid, 'teacherid');
             $arrConds[] = "teacherid in (" . implode(',', $teacherid) . ')';
         }

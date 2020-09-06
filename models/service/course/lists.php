@@ -80,24 +80,21 @@ class Service_Course_Lists {
             return [];
         }
 
-        $teacher = [];
+        
         $teacherids = $this->daoTeacherCourse->getListByConds(['courseid' => $courseid], $this->daoTeacherCourse->arrFieldsMap);
         if (!empty($teacherids)) {
-            $teacherids = array_column($teacherids, 'teacherid');
-            $arrConds = [
-                'teacherid in (' . implode(',', $teacherids) . ')',
-            ];
-            $arrFields = $this->daoTeacher->simpleFields;
-            $arrAppends = [
-                'order by teacherid desc',
-            ];
-            $teacher = $this->daoTeacher->getListByConds($arrConds, $arrFields, null, $arrAppends);
-            $teacher = empty($teacher) ? [] : $teacher;
+            $teacherids = empty($teacherids) ? [] : array_column($teacherids, 'teacherid');
+            foreach ($teacherids as $index => $id) {
+                $teacherids[$index] = intval($id);
+            }
+        }else {
+            $teacherids = [];
         }
 
         $details['createtime'] = date('Y-m-d H:i:s', $details['createtime']);
         $details['updatetime'] = date('Y-m-d H:i:s', $details['updatetime']);
-        $details['teacher']    = $teacher;
+        $details['teacherids'] = $teacherids;
+        $details['coursetypelist'] = self::COURSE_TYPE_LISTS;
         return $details;
     }
 

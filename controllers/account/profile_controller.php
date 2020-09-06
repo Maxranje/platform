@@ -51,7 +51,7 @@ class Controller_Profile extends Zy_Core_Controller{
             $this->error(405, '用户id 为空');
         }
 
-        if (!in_array($type, [1,2])) {
+        if (!in_array($type, [3,2])) {
             $this->error(405, '用户类型参数不正确');
         }
 

@@ -35,7 +35,7 @@ class Service_Account_User {
             $arrConds[] = 'regtime <=' . $endtime;
         }
 
-        $arrFields = $this->daoUser->simpleFields ;
+        $arrFields = $this->daoUser->arrFieldsMap ;
 
         $arrAppends = [
             'order by userid desc',
@@ -50,6 +50,7 @@ class Service_Account_User {
 
         foreach ($lists as $index => $user) {
             $user['regtime']    = date('Y-m-d H:i:s', $user['regtime']);
+            $user['birthday']    = date('Y-m-d H:i:s', $user['birthday']);
             $lists[$index]      = $user;
         }
 

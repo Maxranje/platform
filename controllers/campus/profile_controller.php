@@ -31,13 +31,13 @@ class Controller_Profile extends Zy_Core_Controller{
         $profile =[
             'city'  => $city,
             'area'  => $area,
-            'articleid' => 0,
             'status' => 2,
             'campusname'=> $campusname,
             'updatetime' => time(),
         ];
 
         if (empty($campusid)) {
+            $profile['articleid'] = 0;
             $profile['createtime'] = time();
         }
 

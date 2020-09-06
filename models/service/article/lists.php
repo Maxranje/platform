@@ -64,7 +64,7 @@ class Service_Article_Lists {
         }
 
         $campus = [];
-        if ($article['type'] == self::ARTICLE_TYPE_CAMPUS) {
+        if ($article['articletype'] == self::ARTICLE_TYPE_CAMPUS) {
             $campus = $this->campusDao->getRecordByConds(['articleid' => $articleId], $this->campusDao->simpleFields);
             if (!empty($campus)) {
                 $campus = ['campusid' => $campus['campusid'], 'campusname' => $campus['campusname']] ;
@@ -118,7 +118,7 @@ class Service_Article_Lists {
         }
         
         $this->articleDao->updateByConds(['articleid' => $articleid], ['status' => $status]);
-        return ;
+        return true;
     }
 
 }

@@ -38,8 +38,12 @@ class Dao_Course_Mysql_Course extends Zy_Core_Dao {
             "coursemodel"   => "coursemodel",
             "coursedesc"   => "coursedesc",
             "status"   => "status",
+            "isvip"   => "isvip",
+            "price"   => "price",
+            "recommend" => "recommend",
             "createtime"   => "createtime",
             "updatetime"   => "updatetime",
+            "ext"   => "ext",
         ];
     }
 }
