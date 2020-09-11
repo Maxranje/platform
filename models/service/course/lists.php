@@ -45,11 +45,11 @@ class Service_Course_Lists {
         }
 
         if (!empty($starttime)) {
-            $arrConds[] = "createtime >= " . $starttime;
+            $arrConds[] = "updatetime >= " . $starttime;
         }
 
         if (!empty($endtime)) {
-            $arrConds[] = "createtime >= " . $endtime;
+            $arrConds[] = "createtime <= " . $endtime;
         }
 
         $arrFields = $this->daoCourse->simpleFields;
@@ -65,9 +65,11 @@ class Service_Course_Lists {
             return [0, []];
         }
 
+        $tmpTypeList = array_column(self::COURSE_TYPE_LISTS, null, 'id');
         foreach ($lists as $index => $course) {
             $course['createtime'] = date('Y-m-d H:i:s', $course['createtime']);
             $course['updatetime'] = date('Y-m-d H:i:s', $course['updatetime']);
+            $course['coursetype'] = isset($tmpTypeList[$course['coursetype']]) ? $tmpTypeList[$course['coursetype']]['name'] : "";
             $lists[$index] = $course;
         }
 

@@ -64,7 +64,8 @@ class Service_Account_User {
         }
 
         $userinfo['regtime']    = date('Y-m-d H:i:s', $userinfo['regtime']);
-        $userinfo['birthday']   = date('Y年m月d');
+        $userinfo['birthday']   = date('Y-m-d H:i:s', $userinfo['birthday']);
+        $userinfo['discount']   = $userinfo['discount'] . '(折)';
         return $userinfo;
     }
 

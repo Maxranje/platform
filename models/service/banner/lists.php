@@ -22,7 +22,7 @@ class Service_Banner_Lists {
         }
 
         if (!empty($endtime)) {
-            $arrConds[] = "createtime >= " . $endtime;
+            $arrConds[] = "createtime <= " . $endtime;
         }
 
         $arrFields = $this->daoBanner->arrFieldsMap;
