@@ -34,18 +34,23 @@ class Zy_Core_Controller {
 
         $this->_public = empty($_SERVER) ? array() : $_SERVER ;
 
-        // session中有用户信息,  获取用户信息
-        $this->_userInfo = Zy_Core_Session::getInstance()->getSessionUserInfo();
-        if (!empty($this->_userInfo['userid'])) {
-            $this->_userid = $this->_userInfo['userid'] ;
-        } 
-
         $this->_output  = [
             'ec'        => 0,
             'em'        => 'success',
             'data'      => array(),
             'timestamp' => time(),
         ];
+
+        // session中有用户信息,  获取用户信息
+        $this->_userInfo = Zy_Core_Session::getInstance()->getSessionUserInfo();
+        
+        if (!$this->isLogin()) {
+            $this->error(401, '请先登录');
+        }
+
+        if (!empty($this->_userInfo['userid'])) {
+            $this->_userid = $this->_userInfo['userid'] ;
+        } 
 
         try
         {
