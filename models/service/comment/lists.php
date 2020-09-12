@@ -44,6 +44,7 @@ class Service_Comment_Lists {
 
         foreach ($lists as $index => $record) {
             $record['typeinfo'] = self::COMMENT_TYPE[$record['type']];
+            $record['time'] = date('Y-m-d H:i:s', $record['time']);
             $record['createtime'] = date('Y-m-d H:i:s', $record['createtime']);
             $record['updatetime'] = date('Y-m-d H:i:s', $record['updatetime']);
             $lists[$index] = $record;
@@ -58,6 +59,7 @@ class Service_Comment_Lists {
             return [];
         }
 
+        $details['time'] = date('Y-m-d H:i:s', $details['time']);
         $details['createtime'] = date('Y-m-d H:i:s', $details['createtime']);
         $details['updatetime'] = date('Y-m-d H:i:s',$details['updatetime']);
         return $details;

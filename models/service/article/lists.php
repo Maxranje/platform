@@ -96,7 +96,7 @@ class Service_Article_Lists {
             if (empty($campus)) {
                 $this->articleDao->updateByConds(['articleid' => $articleid], ['articletype' => self::ARTICLE_TYPE_NORMAL]);    
             } else {
-                $this->articleDao->updateByConds(['articleid' => $campus['articleid']], ['articletype' => self::ARTICLE_TYPE_NORMAL]);
+                $articleid != $campus['articleid'] && $this->articleDao->updateByConds(['articleid' => $campus['articleid']], ['articletype' => self::ARTICLE_TYPE_NORMAL]);
                 $this->campusDao->updateByConds(['campusid' => $campusid], ['articleid' => $articleid]);
             }
         }

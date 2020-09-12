@@ -25,18 +25,21 @@ class Controller_Profile extends Zy_Core_Controller{
         $avatar = empty($this->_request['avatar']) ? "" : trim($this->_request['avatar']);
         $content = empty($this->_request['content']) ? "" : trim($this->_request['content']);
         $score = empty($this->_request['score']) ? 0 : intval($this->_request['score']);
+        $time = empty($this->_request['time']) ? '' : intval($this->_request['time']);
 
         if (!isset(Service_Comment_Lists::COMMENT_TYPE[$type])) {
             $this->error(405, '类型错误');
         }
 
-        if (empty($name) || empty($avatar) || empty($content)) {
-            $this->error(405, '名字, 头像, 内容不可以为空');
+        if (empty($name) || empty($avatar) || empty($content) || empty($time)) {
+            $this->error(405, '名字, 头像, 内容, 时间不可以为空');
         }
 
         if ($score <= 0 ) {
             $this->error(405, '分数不可以为0');
         }
+
+        $time = strtotime($time);
 
         $profile =[
             'type'  => $type,
@@ -44,6 +47,7 @@ class Controller_Profile extends Zy_Core_Controller{
             'avatar'=> $avatar,
             'content' => $content,
             'score' => $score,
+            'time' => $time,
             'updatetime' => time(),
         ];
 
