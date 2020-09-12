@@ -13,6 +13,7 @@ class Dao_Comment_Mysql_Comment extends Zy_Core_Dao {
             "avatar"  => "avatar",
             "content"  => "content",
             "score"  => "score",
+            "time"  => "time",
             "createtime"  => "createtime",
             "updatetime"  => "updatetime",
             "ext"  => "ext",
