@@ -21,6 +21,11 @@ class Controller_Profile extends Zy_Core_Controller{
         $userid = empty($this->_request['userid']) ? 0 : intval($this->_request['userid']);
         $isvip  = empty($this->_request['isvip']) ? 0 : intval($this->_request['isvip']);
         $discount  = empty($this->_request['discount']) ? 0 : intval($this->_request['discount']);
+
+        if (empty($this->_userInfo) || !in_array($this->_userid, [10001, 10000]) ) {
+            $this->error(405, '你没有权限修改');
+        }
+
         if (empty($userid)) {
             $this->error(405, '用户id 为空');
         }
@@ -47,6 +52,10 @@ class Controller_Profile extends Zy_Core_Controller{
         $userid = empty($this->_request['userid']) ? 0 : intval($this->_request['userid']);
         $type  = empty($this->_request['type']) ? 0 : intval($this->_request['type']);
 
+        if (empty($this->_userInfo) || !in_array($this->_userid, [10001, 10000]) ) {
+            $this->error(405, '你没有权限修改');
+        }
+
         if (empty($userid)) {
             $this->error(405, '用户id 为空');
         }
@@ -68,6 +77,10 @@ class Controller_Profile extends Zy_Core_Controller{
     public function ajaxChangeUserStatus () {
         $userid = empty($this->_request['userid']) ? 0 : intval($this->_request['userid']);
         $status  = empty($this->_request['status']) ? 0 : intval($this->_request['status']);
+
+        if (empty($this->_userInfo) || !in_array($this->_userid, [10001, 10000]) ) {
+            $this->error(405, '你没有权限修改');
+        }
 
         if (empty($userid)) {
             $this->error(405, '用户id 为空');

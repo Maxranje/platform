@@ -37,6 +37,10 @@ class Zy_Core_Session  {
             return [];
         }
 
+        if ($type == Service_Account_User::USER_STATUS_NORMAL) {
+            return [];
+        }
+
         return [
             'userid' => $userid,
             'name'   => $name,
